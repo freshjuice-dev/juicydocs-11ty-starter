@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* Custom dark mode variant using .dark class */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Source paths for content scanning - relative to src/assets/css/ */
+@source "../../**/*.{njk,md,html,js}";
+
+/* Tailwind v4 Theme Configuration - JuicyDocs / FreshJuice */
+@theme {
+  /* Font families */
+  --font-sans: "General Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "Fira Code", "Fira Mono", "Roboto Mono", "SF Mono", "Ubuntu Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* Max widths - Tailwind docs style */
+  --max-width-8xl: 90rem; /* 1440px */
+  --max-width-9xl: 105rem; /* 1680px */
+
+  /* Custom breakpoints */
+  --breakpoint-xs: 24.375rem; /* 390px */
+}
+
+/* Import component styles */
+@import "./_base.css";
+@import "./_typography.css";
+@import "./_buttons.css";
+@import "./_alerts.css";
+@import "./_navigation.css";
+@import "./_code.css";
+@import "./_utilities.css";
+
+/* Lite YouTube Embed */
+@import "lite-youtube-embed/src/lite-yt-embed.css";

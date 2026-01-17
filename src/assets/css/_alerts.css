@@ -1,0 +1,60 @@
+/* Alert component styles */
+@layer components {
+  .alert {
+    @apply relative my-6 rounded-lg p-4;
+    @apply border border-slate-300 border-l-4 border-l-slate-400;
+    @apply bg-slate-100 text-slate-800;
+    @apply dark:bg-neutral-800 dark:border-neutral-700 dark:border-l-neutral-500 dark:text-neutral-200;
+  }
+
+  /* Alert with title */
+  .alert[data-title]::before {
+    content: attr(data-title);
+    @apply block font-semibold mb-1;
+  }
+
+  /* Info variant */
+  .alert-info {
+    @apply bg-sky-50 border-sky-200 border-l-sky-500 text-sky-900;
+    @apply dark:bg-sky-950 dark:border-sky-800 dark:border-l-sky-400 dark:text-sky-100;
+  }
+
+  /* Warning variant */
+  .alert-warning {
+    @apply bg-amber-50 border-amber-200 border-l-amber-500 text-amber-900;
+    @apply dark:bg-amber-950 dark:border-amber-800 dark:border-l-amber-400 dark:text-amber-100;
+  }
+
+  /* Success variant */
+  .alert-success {
+    @apply bg-emerald-50 border-emerald-200 border-l-emerald-500 text-emerald-900;
+    @apply dark:bg-emerald-950 dark:border-emerald-800 dark:border-l-emerald-400 dark:text-emerald-100;
+  }
+
+  /* Danger variant */
+  .alert-danger {
+    @apply bg-rose-50 border-rose-200 border-l-rose-500 text-rose-900;
+    @apply dark:bg-rose-950 dark:border-rose-800 dark:border-l-rose-400 dark:text-rose-100;
+  }
+
+  /* Links inside alerts */
+  .alert a {
+    @apply font-medium underline;
+  }
+
+  .alert-info a {
+    @apply text-sky-700 hover:text-sky-800 dark:text-sky-300 dark:hover:text-sky-200;
+  }
+
+  .alert-warning a {
+    @apply text-amber-700 hover:text-amber-800 dark:text-amber-300 dark:hover:text-amber-200;
+  }
+
+  .alert-success a {
+    @apply text-emerald-700 hover:text-emerald-800 dark:text-emerald-300 dark:hover:text-emerald-200;
+  }
+
+  .alert-danger a {
+    @apply text-rose-700 hover:text-rose-800 dark:text-rose-300 dark:hover:text-rose-200;
+  }
+}

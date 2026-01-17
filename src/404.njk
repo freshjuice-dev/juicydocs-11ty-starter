@@ -1,0 +1,77 @@
+---
+layout: layouts/base.njk
+permalink: /404.html
+eleventyExcludeFromCollections: true
+title: "404 - Page not found"
+description: "Ahhhhhhh! This page does not exist"
+---
+
+<main class="flex min-h-[calc(100dvh-4rem)] flex-col items-center justify-center px-6 py-16">
+    <div class="w-full text-center">
+        <h1 class="sr-only">Error 404 – This page does not exist.</h1>
+        <p class="mt-0 mb-4 font-mono text-sm">Error 404</p>
+
+        <div id="quote-container">
+            <h4 id="quote-text" class="whitespace-pre-line font-semibold text-pretty"></h4>
+            <iframe id="video-player"
+                    width="1680"
+                    height="945"
+                    class="mx-auto my-8 rounded-lg shadow-lg aspect-video w-full h-auto max-w-5xl"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+        </div>
+
+        <div class="mt-8 md:mt-16 max-w-lg mx-auto text-pretty">
+            <p class="text-lg md:text-xl font-semibold">🤔 Why this video?</p>
+            <p class="text-base mb-0">
+                Because 404s don't have to be boring.<br/>
+                We pick iconic songs that turn a "lost page" into a moment of fun.<br/>
+                Today you got <span id="current-band" class="font-semibold">Green Day</span>.
+                Tomorrow? Maybe <span id="next-band" class="font-semibold">Rolling Stones</span>.
+            </p>
+        </div>
+
+        <div class="mt-8 md:mt-16 max-w-md mx-auto text-pretty">
+            <p class="text-lg md:text-xl font-semibold">😅 Still disappointed?</p>
+            <a href="/" class="btn btn--primary">Go back to the homepage</a>
+        </div>
+    </div>
+</main>
+
+<script>
+(function() {
+    const collection = [
+        { _id: 'OPf0YbXqDm0', band: 'Mark Ronson ft. Bruno Mars', text: 'This page is too hot (hot damn)! 🔥\nBut it doesn\'t exist…\nJump to the homepage and funk around.' },
+        { _id: 'C7dPqrmDWxs', band: 'Pharrell Williams', text: 'Clap along if you feel like a 404 is just a room without a page! 👏\nBut hey, happiness is one click away — back to the homepage.' },
+        { _id: 'dQw4w9WgXcQ', band: 'Rick Astley', text: 'Never gonna find this page 🎤\nNever gonna load it up…\nBut the homepage will never let you down 😉' },
+        { _id: 'xwtdhWltSIg', band: 'R.E.M.', text: 'That\'s me in the corner…\nThat\'s me in the 404, losing my page again.\nBut you can still find salvation on our homepage.' },
+        { _id: '1w7OgIMMRc4', band: 'Guns N\' Roses', text: 'Where did we go now…? 🎸\nWhere did this page go now… 404 oh oh oh…\nBut homepage is waiting for you.' },
+        { _id: 'djV11Xbc914', band: 'A-ha', text: 'Take on 404… take me on! 🎹\nThis page will be gone… in a day or two.\nBack to homepage for the real hit.' },
+        { _id: 'xMaE6toi4mk', band: 'The Clash', text: 'Should this page stay or should it go? 🤔\nWell, it\'s gone.\nBut homepage is always gonna be there.' },
+        { _id: 'SSbBvKaM6sk', band: 'Blur', text: 'Woo-hoo! 🎶\nYou found a 404 instead of a page…\nJump back homepage and scream along.' },
+        { _id: 'XFkzRNyygfk', band: 'Radiohead', text: 'I\'m a 404… I\'m a weirdo 🎤\nWhat the hell is this page doing here?\nTake your beautiful self back to homepage.' },
+        { _id: 'Soa3gO7tL-c', band: 'Green Day', text: 'I walk a lonely road… 🎸\nThe only 404 that I have ever known.\nDon\'t walk alone — take the homepage.' },
+        { _id: '_mEC54eTuGw', band: 'The Rolling Stones', text: 'Don\'t get angry with me 😠\nIt\'s just a 404, nothing personal.\nRoll back to homepage and keep the juice flowing 🍊.' },
+        { _id: 'RYnFIRc0k6E', band: 'Limp Bizkit', text: 'Keep rollin\', rollin\', rollin\' 🎤\n404 got you stuck, but don\'t stop!\nKeep rollin\' back to the homepage.' }
+    ];
+
+    const randomIndex = Math.floor(Math.random() * collection.length);
+    const randomQuote = collection[randomIndex];
+    const nextBandName = collection[(randomIndex + 1) % collection.length].band;
+
+    // Set quote text with homepage link
+    const quoteHtml = randomQuote.text
+        .replace(/\n/g, '<br>')
+        .replace('homepage', '<a href="/">homepage</a>');
+    document.getElementById('quote-text').innerHTML = quoteHtml;
+
+    // Set video
+    document.getElementById('video-player').src = 'https://www.youtube-nocookie.com/embed/' + randomQuote._id;
+
+    // Set band names
+    document.getElementById('current-band').textContent = randomQuote.band;
+    document.getElementById('next-band').textContent = nextBandName;
+})();
+</script>

@@ -1,0 +1,133 @@
+---
+layout: layouts/base.njk
+---
+{%- set pageTitle = title -%}
+{%- set pageDescription = description -%}
+
+{#- Generate Navigation Menu -#}
+{%- set navOptions = {
+    listElement: "ul",
+    listItemElement: "li",
+    listClass: "",
+    listItemClass: "",
+    listItemHasChildrenClass: "",
+    activeListItemClass: "",
+    anchorClass: "",
+    activeAnchorClass: "active",
+    activeKey: eleventyNavigation.key
+} -%}
+{%- set eleventyNavigationMenu = collections.all | eleventyNavigation | eleventyNavigationToHtml(navOptions) -%}
+
+{#- Generate Breadcrumb -#}
+{%- set breadcrumb = collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key) if eleventyNavigation.key else [] -%}
+
+<div class="mx-auto max-w-9xl px-4 sm:px-6 lg:px-8">
+    <div class="lg:flex lg:justify-between lg:gap-12">
+
+        {#- Left Sidebar - Navigation (sticky, inside container) -#}
+        <aside id="sidebar"
+               class="hidden lg:block lg:w-64 lg:shrink-0">
+            <nav class="sticky top-14 max-h-[calc(100vh-3.5rem)] overflow-y-auto py-6 pr-4">
+                {{ eleventyNavigationMenu | safe }}
+            </nav>
+        </aside>
+
+        {#- Mobile Sidebar Overlay -#}
+        <div id="sidebar-overlay"
+             class="fixed inset-0 z-30 hidden bg-neutral-900/70 backdrop-blur-sm lg:hidden"></div>
+
+        {#- Mobile Sidebar -#}
+        <aside id="mobile-sidebar"
+               class="fixed inset-y-0 left-0 z-40 hidden w-72 overflow-y-auto bg-white pb-10 dark:bg-neutral-950 lg:hidden">
+            <div class="flex h-14 items-center border-b border-slate-900/10 px-4 dark:border-neutral-50/5">
+                <a href="/" class="font-semibold text-slate-900 no-underline dark:text-white">
+                    {{ metadata.title }}
+                </a>
+                <button type="button"
+                        id="mobile-menu-close"
+                        class="ml-auto flex h-8 w-8 items-center justify-center rounded-md text-slate-500 hover:text-slate-600 dark:text-neutral-400 dark:hover:text-neutral-300"
+                        aria-label="Close navigation">
+                    {% phosphor "x", "bold", { size: 20 } %}
+                </button>
+            </div>
+            <nav class="px-4 pt-6">
+                {{ eleventyNavigationMenu | safe }}
+            </nav>
+        </aside>
+
+        {#- Main Content Area -#}
+        <main class="min-w-0 max-w-4xl flex flex-col justify-between flex-1">
+            <article class="py-10">
+                {#- Breadcrumb -#}
+                {% include 'partials/breadcrumb.njk' %}
+
+                {#- Page Header -#}
+                <header class="mb-9">
+                    <h1 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-neutral-100">
+                        {{ pageTitle }}
+                    </h1>
+                    {% if pageDescription %}
+                        <p class="mt-2 text-lg text-slate-600 dark:text-neutral-400">
+                            {{ pageDescription | safe }}
+                        </p>
+                    {% endif %}
+
+                    {#- Release metadata -#}
+                    {% if date or author %}
+                        <div class="mt-4 flex flex-wrap items-center gap-4 text-sm text-slate-500 dark:text-neutral-400">
+                            {% if date %}
+                                <span class="inline-flex items-center gap-1.5">
+                                    {% phosphor "calendar-dots", "regular", { size: 16 } %}
+                                    <time datetime="{{ date | dateToISOString }}">{{ date | dateString }}</time>
+                                </span>
+                            {% endif %}
+                            {% if author %}
+                                <span class="inline-flex items-center gap-1.5">
+                                    {% phosphor "user", "regular", { size: 16 } %}
+                                    {{ author }}
+                                </span>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </header>
+
+                {#- Main Content -#}
+                <div class="prose prose-slate max-w-none dark:prose-invert">
+                    {{ content | safe }}
+                </div>
+
+                {#- Changelog Pagination (Newer/Older) -#}
+                {% include "partials/changelog-pagination.njk" %}
+            </article>
+
+            {#- Footer -#}
+            {% include "partials/footer.njk" %}
+        </main>
+
+        {#- Right Sidebar Placeholder (for alignment) -#}
+        <aside class="hidden xl:block xl:w-56 xl:shrink-0"></aside>
+
+    </div>
+</div>
+
+{#- Mobile Bottom Navigation -#}
+<nav id="mobile-bottom-nav"
+     class="fixed bottom-0 left-0 right-0 z-50 flex h-14 items-center justify-around border-t border-slate-900/10 bg-white dark:border-neutral-50/5 dark:bg-neutral-950 lg:hidden">
+    <a href="/"
+       class="flex flex-col items-center gap-0.5 text-slate-600 no-underline dark:text-neutral-400">
+        {% phosphor "house", "regular", { size: 20 } %}
+        <span class="text-[10px] font-medium uppercase">Home</span>
+    </a>
+    <button type="button"
+            data-search-trigger
+            class="flex flex-col items-center gap-0.5 text-slate-600 dark:text-neutral-400">
+        {% phosphor "magnifying-glass", "regular", { size: 20 } %}
+        <span class="text-[10px] font-medium uppercase">Search</span>
+    </button>
+    <button type="button"
+            onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+            class="flex flex-col items-center gap-0.5 text-slate-600 dark:text-neutral-400">
+        {% phosphor "arrow-line-up", "regular", { size: 20 } %}
+        <span class="text-[10px] font-medium uppercase">Top</span>
+    </button>
+</nav>

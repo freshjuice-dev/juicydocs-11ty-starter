@@ -1,0 +1,49 @@
+# Navigation Links
+
+topnav:
+  - text: GitHub
+    url: https://github.com/freshjuice-dev/juicydocs-11ty-starter
+
+# Main menu - shown at top of sidebar
+main:
+  - text: Welcome
+    url: /
+  - text: Changelog
+    url: /changelog/
+
+# Legal/Footer pages
+legal:
+  - text: License
+    url: /license/
+  - text: Credits
+    url: /credits/
+
+footer:
+  - title: Documentation
+    links:
+      - text: Getting Started
+        url: /docs/usage/getting-started/
+      - text: Features
+        url: /docs/features/
+      - text: Customization
+        url: /docs/customization/
+      - text: Examples
+        url: /docs/examples/
+
+  - title: Community
+    links:
+      - text: GitHub
+        url: https://github.com/freshjuice-dev/juicydocs-11ty-starter
+      - text: Issues
+        url: https://github.com/freshjuice-dev/juicydocs-11ty-starter/issues
+      - text: Discussions
+        url: https://github.com/freshjuice-dev/juicydocs-11ty-starter/discussions
+
+  - title: More
+    links:
+      - text: FreshJuice
+        url: https://freshjuice.dev
+      - text: Eleventy
+        url: https://www.11ty.dev
+      - text: Tailwind CSS
+        url: https://tailwindcss.com

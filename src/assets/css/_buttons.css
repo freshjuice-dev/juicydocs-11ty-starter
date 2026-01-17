@@ -1,0 +1,117 @@
+@layer components {
+  .btn {
+    @apply px-4 py-2 text-base rounded-full no-underline;
+    @apply font-medium cursor-pointer;
+    @apply inline-flex items-center justify-center gap-2;
+    @apply border border-dashed border-slate-400;
+    @apply bg-slate-100 text-slate-900;
+    @apply transition-all duration-150 ease-in-out;
+    @apply hover:border-solid hover:bg-slate-200;
+    @apply whitespace-nowrap;
+    @apply focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none;
+    @apply dark:bg-neutral-800 dark:text-neutral-100 dark:border-neutral-500;
+    @apply dark:hover:bg-neutral-700;
+    @apply dark:focus:ring-amber-400;
+  }
+}
+
+/* Button variants */
+@utility btn--primary {
+  @apply bg-red-500 border-red-500 border-solid text-white;
+  @apply hover:bg-red-600 hover:border-red-600;
+  @apply dark:bg-amber-500 dark:border-amber-500 dark:text-neutral-900;
+  @apply dark:hover:bg-amber-400 dark:hover:border-amber-400;
+}
+
+@utility btn--primary-light {
+  @apply bg-red-100 border-red-300 text-red-700;
+  @apply hover:bg-red-200 hover:border-solid;
+  @apply dark:bg-amber-900 dark:border-amber-700 dark:text-amber-200;
+  @apply dark:hover:bg-amber-800;
+}
+
+@utility btn--secondary {
+  @apply bg-slate-100 border-slate-400 text-slate-700;
+  @apply hover:bg-slate-200;
+  @apply dark:bg-neutral-800 dark:border-neutral-500 dark:text-neutral-300;
+  @apply dark:hover:bg-neutral-700;
+}
+
+@utility btn--success {
+  @apply bg-emerald-500 border-emerald-500 border-solid text-white;
+  @apply hover:bg-emerald-600 hover:border-emerald-600;
+}
+
+@utility btn--success-light {
+  @apply bg-emerald-100 border-emerald-300 text-emerald-700;
+  @apply hover:bg-emerald-200 hover:border-solid;
+  @apply dark:bg-emerald-900 dark:border-emerald-700 dark:text-emerald-200;
+  @apply dark:hover:bg-emerald-800 dark:hover:text-emerald-100;
+}
+
+@utility btn--warning {
+  @apply bg-amber-500 border-amber-500 border-solid text-slate-900;
+  @apply hover:bg-amber-600 hover:border-amber-600;
+}
+
+@utility btn--warning-light {
+  @apply bg-amber-100 border-amber-300 text-amber-700;
+  @apply hover:bg-amber-200 hover:border-solid;
+  @apply dark:bg-amber-900 dark:border-amber-700 dark:text-amber-200;
+  @apply dark:hover:bg-amber-800 dark:hover:text-amber-100;
+}
+
+@utility btn--danger {
+  @apply bg-rose-500 border-rose-500 border-solid text-white;
+  @apply hover:bg-rose-600 hover:border-rose-600;
+}
+
+@utility btn--danger-light {
+  @apply bg-rose-100 border-rose-300 text-rose-700;
+  @apply hover:bg-rose-200 hover:border-solid;
+  @apply dark:bg-rose-900 dark:border-rose-700 dark:text-rose-200;
+  @apply dark:hover:bg-rose-800 dark:hover:text-rose-100;
+}
+
+@utility btn--outline {
+  @apply bg-transparent border-red-500 border-solid text-red-500;
+  @apply hover:bg-red-500 hover:text-white;
+  @apply dark:border-amber-500 dark:text-amber-500;
+  @apply dark:hover:bg-amber-500 dark:hover:text-neutral-900;
+}
+
+@utility btn--ghost {
+  @apply bg-transparent border-transparent text-slate-700 shadow-none;
+  @apply hover:bg-slate-100 hover:border-transparent;
+  @apply dark:text-neutral-300 dark:hover:bg-neutral-800;
+}
+
+/* Button sizes */
+@utility btn--xs {
+  @apply px-2.5 py-1 text-xs gap-1;
+}
+
+@utility btn--sm {
+  @apply px-3 py-1.5 text-sm gap-1.5;
+}
+
+@utility btn--md {
+  @apply px-4 py-2 text-base gap-2;
+}
+
+@utility btn--lg {
+  @apply px-6 py-3 text-lg gap-2.5;
+}
+
+@utility btn--xl {
+  @apply px-8 py-4 text-xl gap-3;
+}
+
+@utility btn--full {
+  @apply w-full;
+}
+
+@utility btn--icon {
+  @apply p-2 aspect-square;
+}

@@ -1,0 +1,146 @@
+/* Base styles and fonts */
+@layer base {
+  /* FONTS - General Sans Variable Font */
+  @font-face {
+    font-family: "General Sans";
+    font-style: normal;
+    font-weight: 200 700;
+    font-display: swap;
+    src: url('/assets/fonts/GeneralSans-Variable.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: "General Sans";
+    font-style: italic;
+    font-weight: 200 700;
+    font-display: swap;
+    src: url('/assets/fonts/GeneralSans-VariableItalic.woff2') format('woff2');
+  }
+
+  /* HTML */
+  html {
+    @apply scroll-smooth text-base;
+  }
+
+  /* Body */
+  body {
+    @apply font-sans font-normal leading-normal antialiased text-pretty min-h-dvh;
+    @apply text-neutral-900 bg-white;
+    @apply dark:text-neutral-100 dark:bg-neutral-950;
+  }
+
+  /* Gradient background blobs */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 50% 35% at 20% 20%, rgba(251, 191, 36, 0.2), transparent 50%),
+      radial-gradient(ellipse 40% 30% at 80% 15%, rgba(249, 115, 22, 0.15), transparent 50%),
+      radial-gradient(ellipse 35% 40% at 10% 70%, rgba(253, 224, 71, 0.12), transparent 50%),
+      radial-gradient(ellipse 45% 35% at 90% 85%, rgba(251, 146, 60, 0.1), transparent 50%);
+    filter: blur(80px);
+  }
+
+  .dark body::before {
+    background:
+      radial-gradient(ellipse 50% 35% at 20% 20%, rgba(251, 191, 36, 0.08), transparent 50%),
+      radial-gradient(ellipse 40% 30% at 80% 15%, rgba(249, 115, 22, 0.06), transparent 50%),
+      radial-gradient(ellipse 35% 40% at 10% 70%, rgba(253, 224, 71, 0.05), transparent 50%),
+      radial-gradient(ellipse 45% 35% at 90% 85%, rgba(251, 146, 60, 0.04), transparent 50%);
+    filter: blur(100px);
+  }
+
+  /* Main content - minimum height to push footer to bottom */
+  main {
+    min-height: calc(100dvh - 3.5rem); /* 3.5rem = top nav height (h-14) */
+  }
+
+  /* Adjust for mobile bottom nav */
+  @media (max-width: 1023px) {
+    main {
+      min-height: calc(100dvh - 7rem); /* 3.5rem top nav + 3.5rem bottom nav */
+    }
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-balance;
+  }
+
+  /* Headings with anchor links */
+  h2[id], h3[id], h4[id] {
+    @apply relative scroll-mt-20;
+  }
+
+  /* Anchor link styling */
+  .anchor-link {
+    @apply absolute -left-6 top-1/2 -translate-y-1/2 p-1 no-underline;
+    @apply opacity-0 transition-opacity;
+    @apply text-slate-400 hover:text-slate-600;
+    @apply dark:text-neutral-500 dark:hover:text-neutral-300;
+  }
+
+  h2:hover .anchor-link,
+  h3:hover .anchor-link,
+  h4:hover .anchor-link {
+    @apply opacity-100;
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-red-500;
+    @apply dark:outline-amber-400;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-red-200 text-red-900;
+  }
+
+  .dark ::selection {
+    @apply bg-amber-700 text-amber-100;
+  }
+
+  /* Links */
+  a {
+    @apply text-red-800 underline underline-offset-2;
+    @apply hover:text-red-900 hover:no-underline;
+    @apply dark:text-amber-400 dark:hover:text-amber-300;
+  }
+
+  /* Buttons */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    @apply cursor-pointer;
+  }
+
+  /* Lists - reset */
+  ul, ol {
+    @apply list-none p-0 m-0;
+  }
+
+  /* Images */
+  img {
+    @apply max-w-full h-auto block;
+  }
+
+  /* Code */
+  code, kbd, pre, samp {
+    @apply font-mono text-sm;
+  }
+
+  /* Tables */
+  table {
+    @apply w-full border-collapse border-spacing-0;
+  }
+
+  /* Hide native search input clear button */
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}

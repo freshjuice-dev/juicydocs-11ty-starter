@@ -1,0 +1,18 @@
+# Site Metadata
+title: JuicyDocs
+description: FreshJuice's documentation starter template built with 11ty and Tailwind CSS.
+url: https://juicydocs.freshjuice.dev
+language: en
+author: FreshJuice
+email: contact@freshjuice.dev
+
+# Social/SEO
+twitter: "@FreshJuiceDev"
+ogImage: /og-default.png
+themeColor: "#f97316"
+
+# GitHub
+github:
+  owner: freshjuice-dev
+  repo: juicydocs-11ty-starter
+  editBranch: main
