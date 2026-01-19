@@ -21,6 +21,7 @@ export default function (eleventyConfig) {
         symbol: linkIconSvg,
         class: "anchor-link",
         placement: "before",
+        ariaHidden: true,
       }),
       tabIndex: false,
     });
