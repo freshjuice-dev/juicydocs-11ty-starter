@@ -9,20 +9,34 @@ export function initMobileMenu() {
   const menuClose = document.getElementById("mobile-menu-close");
   const mobileSidebar = document.getElementById("mobile-sidebar");
   const sidebarOverlay = document.getElementById("sidebar-overlay");
+  const menuIconOpen = document.getElementById("menu-icon-open");
+  const menuIconClose = document.getElementById("menu-icon-close");
+
+  function isMobileMenuOpen() {
+    return mobileSidebar && !mobileSidebar.classList.contains("hidden");
+  }
 
   function openMobileMenu() {
     mobileSidebar?.classList.remove("hidden");
     sidebarOverlay?.classList.remove("hidden");
+    menuIconOpen?.classList.add("hidden");
+    menuIconClose?.classList.remove("hidden");
     document.body.style.overflow = "hidden";
   }
 
   function closeMobileMenu() {
     mobileSidebar?.classList.add("hidden");
     sidebarOverlay?.classList.add("hidden");
+    menuIconOpen?.classList.remove("hidden");
+    menuIconClose?.classList.add("hidden");
     document.body.style.overflow = "";
   }
 
-  menuToggle?.addEventListener("click", openMobileMenu);
+  function toggleMobileMenu() {
+    isMobileMenuOpen() ? closeMobileMenu() : openMobileMenu();
+  }
+
+  menuToggle?.addEventListener("click", toggleMobileMenu);
   menuClose?.addEventListener("click", closeMobileMenu);
   sidebarOverlay?.addEventListener("click", closeMobileMenu);
 

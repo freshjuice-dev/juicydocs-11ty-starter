@@ -10,7 +10,8 @@
                     id="mobile-menu-toggle"
                     class="lg:hidden -ml-2 flex h-8 w-8 items-center justify-center rounded-md text-slate-500 hover:text-slate-600 dark:text-neutral-400 dark:hover:text-neutral-300"
                     aria-label="Toggle navigation">
-                {% phosphor "list", "bold", { size: 20 } %}
+                <span id="menu-icon-open">{% phosphor "list", "bold", { size: 20 } %}</span>
+                <span id="menu-icon-close" class="hidden">{% phosphor "x", "bold", { size: 20 } %}</span>
             </button>
 
             <a href="/" class="flex items-center gap-2 font-semibold text-slate-900 no-underline dark:text-white min-w-10 shrink-0">
