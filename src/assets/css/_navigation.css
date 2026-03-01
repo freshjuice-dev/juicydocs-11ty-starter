@@ -54,6 +54,7 @@
     @apply border-l border-transparent;
     @apply hover:text-slate-900 hover:border-slate-400;
     @apply dark:text-neutral-400 dark:hover:text-neutral-200 dark:hover:border-neutral-500;
+    overflow-wrap: break-word;
   }
 
   .toc a.active,
