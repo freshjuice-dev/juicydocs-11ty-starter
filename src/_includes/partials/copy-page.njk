@@ -1,0 +1,72 @@
+{#-
+  Copy page dropdown — exposes the .md mirror and AI-service quick-actions
+  for the current page. Rendered in docs and changelog layouts.
+-#}
+{%- set mdPath = page.url | mdUrl -%}
+{%- set absoluteMdUrl = build.url + mdPath -%}
+{%- set aiPrompt = "Read " + absoluteMdUrl + " so I can ask questions about it." -%}
+
+<div class="copy-page relative" data-copy-page>
+    <button type="button"
+            data-copy-page-trigger
+            aria-expanded="false"
+            aria-haspopup="menu"
+            aria-label="Copy page options"
+            class="inline-flex items-center gap-1.5 rounded-md border border-slate-900/10 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-900 dark:border-neutral-50/10 dark:bg-neutral-900 dark:text-neutral-200 dark:hover:bg-neutral-800 dark:hover:text-neutral-100">
+        {% phosphor "copy", "regular", { size: 16 } %}
+        <span>Copy page</span>
+        {% phosphor "caret-down", "regular", { size: 14 } %}
+    </button>
+
+    <div data-copy-page-menu
+         role="menu"
+         class="absolute right-0 top-full z-30 mt-1 hidden w-72 overflow-hidden rounded-lg border border-slate-900/10 bg-white shadow-lg dark:border-neutral-50/10 dark:bg-neutral-900">
+        <button type="button"
+                role="menuitem"
+                data-copy-page-action="copy"
+                data-md-path="{{ mdPath }}"
+                class="flex w-full items-start gap-3 px-3 py-2.5 text-left text-sm text-slate-700 transition hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-neutral-800">
+            {% phosphor "clipboard-text", "regular", { size: 18 } %}
+            <span class="flex-1">
+                <span class="block font-medium" data-copy-page-label>Copy as Markdown</span>
+                <span class="block text-xs text-slate-500 dark:text-neutral-400">Copy the raw markdown of this page to your clipboard</span>
+            </span>
+        </button>
+
+        <a href="{{ mdPath }}"
+           role="menuitem"
+           target="_blank"
+           rel="noopener"
+           class="flex w-full items-start gap-3 px-3 py-2.5 text-sm text-slate-700 no-underline transition hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-neutral-800">
+            {% phosphor "file-text", "regular", { size: 18 } %}
+            <span class="flex-1">
+                <span class="block font-medium">View as Markdown</span>
+                <span class="block text-xs text-slate-500 dark:text-neutral-400">Open the raw markdown in a new tab</span>
+            </span>
+        </a>
+
+        <a href="https://chatgpt.com/?hints=search&q={{ aiPrompt | urlencode }}"
+           role="menuitem"
+           target="_blank"
+           rel="noopener"
+           class="flex w-full items-start gap-3 px-3 py-2.5 text-sm text-slate-700 no-underline transition hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-neutral-800">
+            {% phosphor "chat-circle-dots", "regular", { size: 18 } %}
+            <span class="flex-1">
+                <span class="block font-medium">Open in ChatGPT</span>
+                <span class="block text-xs text-slate-500 dark:text-neutral-400">Ask ChatGPT about this page</span>
+            </span>
+        </a>
+
+        <a href="https://claude.ai/new?q={{ aiPrompt | urlencode }}"
+           role="menuitem"
+           target="_blank"
+           rel="noopener"
+           class="flex w-full items-start gap-3 px-3 py-2.5 text-sm text-slate-700 no-underline transition hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-neutral-800">
+            {% phosphor "sparkle", "regular", { size: 18 } %}
+            <span class="flex-1">
+                <span class="block font-medium">Open in Claude</span>
+                <span class="block text-xs text-slate-500 dark:text-neutral-400">Ask Claude about this page</span>
+            </span>
+        </a>
+    </div>
+</div>
