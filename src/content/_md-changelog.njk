@@ -1,0 +1,17 @@
+---
+pagination:
+  data: collections.changelog
+  size: 1
+  alias: release
+permalink: "{{ release.url | mdUrl }}"
+eleventyExcludeFromCollections: true
+layout: nada
+---
+# {{ release.data.title | safe }}
+
+> {{ release.data.description | safe }}
+
+Source: {{ build.url }}{{ release.url }}
+Date: {{ release.data.date | dateString }}
+
+{{ release.inputPath | rawMarkdown | safe }}

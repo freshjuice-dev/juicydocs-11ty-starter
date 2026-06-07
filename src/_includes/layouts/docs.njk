@@ -38,6 +38,11 @@ layout: layouts/base.njk
 
                 {#- Page Header -#}
                 <header class="mb-9">
+                    {#- Copy page / AI-friendly actions -#}
+                    <div class="mb-4 flex justify-end">
+                        {% include 'partials/copy-page.njk' %}
+                    </div>
+
                     {#- GitHub Links -#}
                     {% if metadata.github.owner and metadata.github.repo %}
                         {%- set githubBaseUrl = "https://github.com/" + metadata.github.owner + "/" + metadata.github.repo -%}

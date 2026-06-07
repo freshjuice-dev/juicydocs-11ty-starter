@@ -1,0 +1,16 @@
+---
+pagination:
+  data: collections.docs
+  size: 1
+  alias: doc
+permalink: "{{ doc.url | mdUrl }}"
+eleventyExcludeFromCollections: true
+layout: nada
+---
+# {{ doc.data.title | safe }}
+
+> {{ doc.data.description | safe }}
+
+Source: {{ build.url }}{{ doc.url }}
+
+{{ doc.inputPath | rawMarkdown | safe }}

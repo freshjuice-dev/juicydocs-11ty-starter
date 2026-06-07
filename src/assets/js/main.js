@@ -6,6 +6,7 @@ import "./components/command-palette.js";
 import { initThemeSwitcher } from "./components/theme-switcher.js";
 import { initMobileMenu } from "./components/mobile-menu.js";
 import { initTocTracker } from "./components/toc-tracker.js";
+import { initCopyPage } from "./components/copy-page.js";
 
 /**
  * DOM ready handler
@@ -20,6 +21,7 @@ document.addEventListener(
     initThemeSwitcher();
     initMobileMenu();
     initTocTracker();
+    initCopyPage();
 
     // JuicyDocs console branding
     console.log(

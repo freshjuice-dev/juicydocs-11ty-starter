@@ -2,6 +2,7 @@
  * Custom Eleventy filters
  * https://www.11ty.dev/docs/filters/
  */
+import fs from "node:fs";
 import slugify from "@sindresorhus/slugify";
 
 // TOC Configuration
@@ -54,6 +55,25 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("isExternalUrl", function (url) {
     if (!url) return false;
     return url.startsWith("http://") || url.startsWith("https://");
+  });
+
+  // mdUrl - Turn an HTML page URL into its .md mirror URL.
+  //   /docs/getting-started/ → /docs/getting-started.md
+  //   /                      → /index.md
+  eleventyConfig.addFilter("mdUrl", function (url) {
+    if (!url) return url;
+    const trimmed = url.endsWith("/") ? url.slice(0, -1) : url;
+    return (trimmed === "" ? "/index" : trimmed) + ".md";
+  });
+
+  // rawMarkdown - Read a source file and strip its YAML front matter.
+  // Used by the per-page .md mirrors to expose the original markdown to
+  // AI tools without going through the HTML render pipeline (which would
+  // inject layouts, syntax-highlighted pre blocks, anchor links, etc.).
+  eleventyConfig.addFilter("rawMarkdown", function (inputPath) {
+    if (!inputPath) return "";
+    const raw = fs.readFileSync(inputPath, "utf8");
+    return raw.replace(/^---\s*\r?\n[\s\S]*?\r?\n---\s*\r?\n?/, "").trim();
   });
 
   // dateString - Format date as YYYY-MM-DD

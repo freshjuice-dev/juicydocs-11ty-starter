@@ -16,6 +16,11 @@
 {# Canonical URL #}
 <link rel="canonical" href="{{ pageUrl }}">
 
+{# Markdown mirror for AI tools (docs & changelog pages only) #}
+{% if layout == 'layouts/docs.njk' or layout == 'layouts/changelog.njk' %}
+<link rel="alternate" type="text/markdown" href="{{ page.url | mdUrl }}" title="Markdown source for AI tools">
+{% endif %}
+
 {# Robots #}
 {% if noindex %}
 <meta name="robots" content="noindex, nofollow">

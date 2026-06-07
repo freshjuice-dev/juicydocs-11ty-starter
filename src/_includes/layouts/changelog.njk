@@ -35,6 +35,11 @@ layout: layouts/base.njk
 
                 {#- Page Header -#}
                 <header class="mb-9">
+                    {#- Copy page / AI-friendly actions -#}
+                    <div class="mb-4 flex justify-end">
+                        {% include 'partials/copy-page.njk' %}
+                    </div>
+
                     <h1 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-neutral-100">
                         {{ pageTitle }}
                     </h1>
