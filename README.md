@@ -1,5 +1,6 @@
 # JuicyDocs
 
+> ⚠️ PRIVATE REPOSITORY — Proprietary and confidential. See [LICENSE](LICENSE).
 <img src="src/static/og-default.png" alt="JuicyDocs Logo" width="500"/>
 
 A modern, fast, and accessible documentation starter template built with [Eleventy](https://www.11ty.dev/) and [Tailwind CSS](https://tailwindcss.com/).
