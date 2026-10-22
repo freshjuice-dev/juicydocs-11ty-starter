@@ -60,7 +60,7 @@ export default function (eleventyConfig) {
       return content;
     }
 
-    if (!content.includes('href="http')) {
+    if (!content.includes("href=\"http")) {
       return content;
     }
 

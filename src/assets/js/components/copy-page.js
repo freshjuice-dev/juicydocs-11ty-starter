@@ -19,7 +19,7 @@ async function copyMarkdownToClipboard(mdPath) {
 function wireContainer(container) {
   const trigger = container.querySelector("[data-copy-page-trigger]");
   const menu = container.querySelector("[data-copy-page-menu]");
-  const copyBtn = container.querySelector('[data-copy-page-action="copy"]');
+  const copyBtn = container.querySelector("[data-copy-page-action=\"copy\"]");
   const copyLabel = container.querySelector("[data-copy-page-label]");
   if (!trigger || !menu || !copyBtn || !copyLabel) return;
 

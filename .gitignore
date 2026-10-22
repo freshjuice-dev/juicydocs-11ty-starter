@@ -32,3 +32,6 @@ npm-debug.log*
 # Misc
 *.bak
 *.tmp
+
+# Lockfile
+package-lock.json

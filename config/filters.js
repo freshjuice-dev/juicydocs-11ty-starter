@@ -15,7 +15,7 @@ function extractHtmlTags(string, tagsToFind) {
   string.replace(/<([a-zA-Z][a-zA-Z0-9_-]*)\b[^>]*>(.*?)<\/\1>/g, (m, tag, content) => {
     if (tagsToFind.includes(tag)) {
       // Strip anchor links (from markdown-it-anchor) from heading content
-      const cleanContent = content.replace(/<a[^>]*class="anchor-link"[^>]*>.*?<\/a>\s*/g, '').trim();
+      const cleanContent = content.replace(/<a[^>]*class="anchor-link"[^>]*>.*?<\/a>\s*/g, "").trim();
       found.push({ tagName: tag, value: cleanContent });
     }
   });
@@ -87,7 +87,7 @@ export default function (eleventyConfig) {
     const htmlTagsFound = extractHtmlTags(content, TOC_HTML_TAGS);
     let tocMarkup = "";
     if (htmlTagsFound.length > TOC_MIN_TAGS) {
-      tocMarkup = `<ul class="space-y-2 text-sm">`;
+      tocMarkup = "<ul class=\"space-y-2 text-sm\">";
       const anchorsIds = [];
       htmlTagsFound.forEach(function (htmlTag, tagIndex) {
         let slugifiedId = slugify(htmlTag.value);

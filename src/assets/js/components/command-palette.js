@@ -4,7 +4,7 @@
  */
 
 // Shared search icon (Phosphor magnifying-glass)
-const SEARCH_ICON = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg>`;
+const SEARCH_ICON = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 256 256\" fill=\"currentColor\"><path d=\"M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z\"/></svg>";
 
 // Platform detection for keyboard shortcut
 const IS_MAC = /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
@@ -27,7 +27,7 @@ export class SearchTrigger extends HTMLElement {
       <button type="button"
               data-search-trigger
               class="hidden h-8 w-full items-center gap-2 rounded-full bg-white pl-2 pr-3 text-sm text-slate-600 ring-1 ring-slate-900/10 transition hover:ring-slate-900/20 dark:bg-neutral-900/75 dark:text-neutral-300 dark:ring-inset dark:ring-white/5 dark:hover:bg-neutral-700/40 lg:flex">
-        ${SEARCH_ICON.replace('width="20"', 'width="16"').replace('height="20"', 'height="16"')}
+        ${SEARCH_ICON.replace("width=\"20\"", "width=\"16\"").replace("height=\"20\"", "height=\"16\"")}
         <span class="flex-auto text-left">Quick search...</span>
         <span class="text-xs text-slate-600 dark:text-neutral-200">${SHORTCUT}</span>
       </button>
