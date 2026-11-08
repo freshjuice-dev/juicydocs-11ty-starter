@@ -46,7 +46,7 @@
     "@11ty/eleventy-img": "^7.1.1",
     "@11ty/eleventy-navigation": "^1.0.5",
     "@11ty/eleventy-plugin-rss": "^3.1.0",
-    "@sindresorhus/slugify": "^3.0.1",
+    "@sindresorhus/slugify": "^4.0.0",
     "@tailwindcss/cli": "^4.3.3",
     "@types/markdown-it": "^14.2.0",
     "@zachleat/table-saw": "^1.0.7",
